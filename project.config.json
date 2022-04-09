@@ -39,27 +39,5 @@
     },
     "appid": "wxb3ecfb35f85501e8",
     "projectname": "signgo",
-    "libVersion": "2.14.1",
-    "cloudfunctionTemplateRoot": "cloudfunctionTemplate",
-    "condition": {
-        "search": {
-            "list": []
-        },
-        "conversation": {
-            "list": []
-        },
-        "plugin": {
-            "list": []
-        },
-        "game": {
-            "list": []
-        },
-        "miniprogram": {
-            "list": [{
-                "id": -1,
-                "name": "db guide",
-                "pathName": "pages/databaseGuide/databaseGuide"
-            }]
-        }
-    }
+    "libVersion": "2.14.1"
 }

@@ -1,0 +1,22 @@
+{
+  "name": "signgo",
+  "version": "1.0.0",
+  "description": "活动报名类小程序，用于组织、收集和管理各类活动",
+  "main": ".eslintrc.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Joy917/signgo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Joy917/signgo/issues"
+  },
+  "homepage": "https://github.com/Joy917/signgo#readme",
+  "dependencies": {
+    "weui-miniprogram": "^1.2.3"
+  }
+}

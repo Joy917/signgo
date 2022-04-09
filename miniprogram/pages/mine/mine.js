@@ -3,7 +3,6 @@
 
 Page({
     data: {
-       
     },
     tabbarChange: function (events) {
         console.log(events);

@@ -2,6 +2,3 @@
 
 <mp-searchbar class="searchbar" placeholder="输入活动名">
 </mp-searchbar>
-
-<mp-tabbar class="tabbar" bindchange="tabbarChange" list="{{list}}">
-</mp-tabbar>

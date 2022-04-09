@@ -4,7 +4,8 @@
     "pages/create/create",
     "pages/participated/participated",
     "pages/released/released",
-    "pages/square/square"
+    "pages/square/square",
+    "pages/mine/mine"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -17,5 +18,39 @@
   "style": "v2",
   "useExtendedLib": {
     "weui": true
+  },
+  "lazyCodeLoading": "requiredComponents",
+  "tabBar": {
+    "list": [{
+        "current": 0,
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "./icons/home.png",
+        "selectedIconPath": "./icons/home-fill.png"
+      },
+      {
+
+        "current": 1,
+        "pagePath": "pages/create/create",
+        "text": "创建活动",
+        "iconPath": "./icons/create.png",
+        "selectedIconPath": "./icons/creating.png"
+      },
+      {
+
+        "current": 2,
+        "pagePath": "pages/square/square",
+        "text": "活动广场",
+        "iconPath": "./icons/square.png",
+        "selectedIconPath": "./icons/square-fill.png"
+      },
+      {
+        "current": 3,
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "iconPath": "./icons/mine.png",
+        "selectedIconPath": "./icons/mine-fill.png"
+      }
+    ]
   }
 }
