@@ -1,4 +1,29 @@
 <!--首页-->
 
-<mp-searchbar class="searchbar" placeholder="输入活动名">
-</mp-searchbar>
+<view class="weui-block">
+    <view class="weui-flex__item">
+        <mp-searchbar class="searchbar" placeholder="输入活动名">
+        </mp-searchbar>
+    </view>
+    <view class="weui-flex__item">
+
+        <scroll-view scroll-y="true" class="scrollView" bindscrolltolower="loadMore">
+            <view class="swiper">
+                <swiper class="swiper-box" indicator-dots="{{indicatorDots}}" vertical="{{vertical}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-color="#fff" indicator-active-color="red" >
+                    <block wx:for-items="{{banner_url}}" wx:key="id">
+                        <navigator url="../../images">
+                            <swiper-item>
+                                <block wx:if="{{item}}">
+                                    <image class="imgw" src="{{item.url}}" mode="aspectFill" />
+                                </block>
+                                <block wx:else>
+                                    <image src="../../images/运动女孩.jpeg" mode="aspectFill"></image>
+                                </block>
+                            </swiper-item>
+                        </navigator>
+                    </block>
+                </swiper>
+            </view>
+        </scroll-view>
+    </view>
+</view>

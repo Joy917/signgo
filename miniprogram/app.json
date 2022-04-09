@@ -29,7 +29,6 @@
         "selectedIconPath": "./icons/home-fill.png"
       },
       {
-
         "current": 1,
         "pagePath": "pages/create/create",
         "text": "创建活动",
@@ -37,7 +36,6 @@
         "selectedIconPath": "./icons/creating.png"
       },
       {
-
         "current": 2,
         "pagePath": "pages/square/square",
         "text": "活动广场",
