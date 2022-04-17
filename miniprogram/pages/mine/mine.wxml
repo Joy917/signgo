@@ -1,3 +1,26 @@
 <!--首页-->
+<!-- <view class="flex-wrp" style="flex-direction:row;">
+    <mp-icon class="icon" icon="note" size="{{25}}"></mp-icon>
+    <view class="flex-text">我创建的</view>
+</view>
+    
+<view class="flex-wrp" style="flex-direction:row;">
+    <mp-icon class="icon" icon="group-detail" size="{{25}}"></mp-icon>
+    <view class="flex-text">我加入的</view>
+</view> -->
 
-<view>我的</view>
+<view>
+  <button bindtap="showPop">显示pop组件</button>
+  <view class="sitem">已选择item: 
+    <text>{{sitem.name}}</text>
+  </view>
+</view>
+<popup isShowPop="{{isShowPop}}">
+  <view slot="after">
+    <view class='select-ul'>
+      <view catchtap='selectLi' data-item="{{item}}" class='li {{item.id==sitem.id?"active":""}}' wx:for="{{selectList}}" item="item" wx:key="key">{{item.name}}
+        <em wx:if="{{item.id==sitem.id}}" class='iconfont icon-success'></em>
+      </view>
+    </view>
+  </view>
+</popup>

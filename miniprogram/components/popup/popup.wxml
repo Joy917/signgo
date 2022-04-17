@@ -1,0 +1,8 @@
+<view class="popup-warpper" wx:if="{{isShowPop}}" bindtap="">
+  <view class="wrapper">
+    <view class='title' wx:if="{{needTitle}}">
+    </view>
+    <view class='title pop-title' wx:elif="{{title}}">{{title}}</view>
+    <slot name="after"></slot>
+  </view>
+</view>

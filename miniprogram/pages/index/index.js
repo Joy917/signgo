@@ -3,7 +3,8 @@
 
 Page({
     data: {
-        banner_url: [{
+        banner_url: [
+            {
                 "id": 0,
                 "url": "../../images/茶杯-小.jpeg"
             },
