@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/Joy917/signgo#readme",
   "dependencies": {
-    "weui-miniprogram": "^1.2.3"
+    "@vant/weapp": "^1.10.3"
   }
 }

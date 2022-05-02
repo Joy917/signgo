@@ -1,6 +1,0 @@
-{
-    "navigationBarTitleText": "报名冲冲冲",
-    "usingComponents": {
-        "mp-searchbar": "weui-miniprogram/searchbar/searchbar"
-    }
-}

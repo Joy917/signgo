@@ -1,9 +1,0 @@
-/**index.wxss**/
-
-.imgw {
-    width: 100%;
-}
-
-.swiper-box {
-    height: 15rem;
-}

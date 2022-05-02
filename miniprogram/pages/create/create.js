@@ -1,8 +1,12 @@
-// index.js
-// const app = getApp()
 
 Page({
-    data: {
-    },
-
+  data: {},
+  onShow: function () {
+    if (typeof this.getTabBar === 'function' && this.getTabBar()) {
+      this.getTabBar().setData({
+        active: 'create',
+        createIcon: 'edit'
+      })
+    }
+  }
 });
