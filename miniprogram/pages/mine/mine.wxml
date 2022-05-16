@@ -1,1 +1,4 @@
-<view>我的</view>
+<van-dropdown-menu active-color="#1989fa" z-index="99999">
+  <van-dropdown-item value="{{ value1 }}" options="{{ option1 }}" />
+  <van-dropdown-item value="{{ value2 }}" options="{{ option2 }}" />
+</van-dropdown-menu>
