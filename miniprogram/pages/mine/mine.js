@@ -18,27 +18,27 @@ Page({
         value: 'a'
       },
       {
-        text: '开始时间',
+        text: '时间优先',
         value: 'b'
       },
       {
-        text: '参与人数',
+        text: '距离优先',
         value: 'c'
       },
     ],
     value1: 0,
     value2: 'a',
   },
-  onOpen() {
-    console.log("open menu");
-  },
-  onFirstChange(value) {
-    console.log(value);
+  onFirstChange({
+    detail
+  }) {
     this.setData({
-      value1: value
+      value1: detail
     })
   },
-  onSecondChange(detail) {
+  onSecondChange({
+    detail
+  }) {
     this.setData({
       value2: detail
     })
