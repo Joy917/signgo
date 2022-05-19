@@ -1,2 +1,10 @@
-<!--创建活动-->
-<view>创建活动</view>
+<van-field value="{{ nameValue }}" size="large" maxlength="15" required clearable clickable="true" label="活动名" placeholder="请输入活动名称" bind:change="onNameChange" />
+<van-cell required title="活动类型" size="large" is-link value="{{typeValue}}" bind:click="onClickType" arrow-direction="{{typeArrowDirection}}" />
+<block wx:if="{{showTree}}">
+  <van-tree-select items="{{ items }}" main-active-index="{{ mainActiveIndex }}" active-id="{{ activeId }}" bind:click-nav="onClickNav" bind:click-item="onClickItem" />
+</block>
+<van-field value="{{ numberValue }}" size="large" type="number" maxlength="4" required clickable="true" label="人数" placeholder="请设置参与人数上限" bind:change="onNumberChange" />
+<van-field value="{{ introValue }}" size="large" show-word-limit="true" autosize="{{introSizeLimit}}" type="textarea" maxlength="100" required clearable clickable="true" label="介绍" placeholder="请输入活动介绍" bind:change="onIntroChange" />
+
+
+<van-uploader deletable="{{ true }}" max-count="3" file-list="{{ fileList }}" bind:after-read="afterRead" />
