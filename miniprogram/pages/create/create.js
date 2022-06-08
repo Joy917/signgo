@@ -1,23 +1,19 @@
-const chooseLocation = requirePlugin('chooseLocation');
-
-const key = '7WZBZ-3F3C3-RXA3C-3Z45A-EXNP2-2GBO7'; //使用在腾讯位置服务申请的key
-const referer = '活动报名冲'; //调用插件的app的名称
-let location = JSON.stringify({
-  latitude: 39.89631551,
-  longitude: 116.323459711
-});
-const category = '生活服务,休闲娱乐,运动健身';
+// import QQMapWX from '../../libs/qqmap-wx-jssdk.min.js';
+// var qqmapsdk;
+// const key = '7WZBZ-3F3C3-RXA3C-3Z45A-EXNP2-2GBO7'; //使用在腾讯位置服务申请的key
 
 Page({
   data: {
     nameValue: '',
     typeValue: '点击选择',
     introValue: '',
-    siteValue: '',
+    locationText: '',
+    location: {},
     introSizeLimit: {
       maxHeight: 100,
       minHeight: 50
     },
+    price: 0,
     showTree: false,
     typeArrowDirection: '',
     fileList: [],
@@ -70,10 +66,19 @@ Page({
       introValue: event.detail
     });
   },
-  onSiteChange(event) {
+  onLocationChange(event) {
     this.setData({
-      siteValue: event.detail
+      locationText: event.detail
     });
+  },
+  onPriceChange(event) {
+    const price = Number(event.detail)
+    if (price && price >= 0) {
+      console.log(price);
+      this.setData({
+        price: event.detail
+      });
+    }
   },
   onClickType() {
     let typeDirect = 'down'
@@ -104,13 +109,26 @@ Page({
     });
     this.onClickType();
   },
-  onClickMap() {
-    if (location) {
-      wx.navigateTo({
-        url: `plugin://chooseLocation/index?key=${key}&referer=${referer}&location=${location}&category=${category}`
-      });
+  // 选择活动地点
+  onClickLocation() {
+    if (!this.data.locationText) {
+      wx.chooseLocation({
+        success: res => {
+          this.setData({
+            location: {
+              latitude: res.latitude,
+              longitude: res.longitude
+            },
+            locationText: res.address
+          })
+        },
+        fail: res => {
+          console.log('打开地图选择位置取消', res)
+        }
+      })
     }
   },
+
   afterRead(event) {
     const {
       file
@@ -138,13 +156,22 @@ Page({
       },
     });
   },
+
+  // onLoad: function () {
+  // 实例化API核心类
+  // qqmapsdk = new QQMapWX({
+  //   key
+  // });
+  // },
   onShow: function () {
-    location = chooseLocation.getLocation(); // 如果点击确认选点按钮，则返回选点结果对象，否则返回null
+    // 自定义tabbar初始化
     if (typeof this.getTabBar === 'function' && this.getTabBar()) {
       this.getTabBar().setData({
         active: 'create',
         createIcon: 'edit'
       })
     }
+
   }
+
 });
