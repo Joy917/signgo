@@ -1,5 +1,5 @@
 {
-    "navigationBarTitleText": "报名冲冲冲",
+    "navigationBarTitleText": "活动报名冲",
     "usingComponents": {
       "van-search": "@vant/weapp/search/index",
       "van-toast": "@vant/weapp/toast/index"

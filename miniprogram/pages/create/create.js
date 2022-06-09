@@ -5,7 +5,7 @@
 Page({
   data: {
     nameValue: '',
-    typeValue: '点击选择',
+    typeValue: '点击选择活动类型',
     introValue: '',
     locationText: '',
     location: {},
@@ -13,7 +13,13 @@ Page({
       maxHeight: 100,
       minHeight: 50
     },
+    peopleNumber: 1,
     price: 0,
+    startTime: '',
+    endTime: '',
+    minDate: new Date().getTime(),
+    popStartTime: false,
+    popEndTime: false,
     showTree: false,
     typeArrowDirection: '',
     fileList: [],
@@ -61,6 +67,11 @@ Page({
       nameValue: event.detail
     });
   },
+  onNumberChange(event) {
+    this.setData({
+      peopleNumber: event.detail
+    });
+  },
   onIntroChange(event) {
     this.setData({
       introValue: event.detail
@@ -74,7 +85,6 @@ Page({
   onPriceChange(event) {
     const price = Number(event.detail)
     if (price && price >= 0) {
-      console.log(price);
       this.setData({
         price: event.detail
       });
@@ -101,7 +111,6 @@ Page({
   onClickItem({
     detail = {}
   }) {
-    console.log(detail.text);
     const activeId = this.data.activeId === detail.id ? null : detail.id;
     this.setData({
       activeId,
@@ -123,10 +132,42 @@ Page({
           })
         },
         fail: res => {
-          console.log('打开地图选择位置取消', res)
+          // console.log('cancel select')
         }
       })
     }
+  },
+  onClickStartTime() {
+    this.setData({
+      popStartTime: true
+    })
+  },
+  onClickEndTime() {
+    this.setData({
+      popEndTime: true
+    })
+  },
+  onStartTimeConfirm(event) {
+    this.setData({
+      startTime: event.detail,
+      popStartTime: false
+    });
+  },
+  onEndTimeConfirm(event) {
+    this.setData({
+      endTime: event.detail,
+      popEndTime: false
+    });
+  },
+  onStartTimeCancel() {
+    this.setData({
+      popStartTime: false
+    });
+  },
+  onEndTimeCancel() {
+    this.setData({
+      popEndTime: false
+    });
   },
 
   afterRead(event) {

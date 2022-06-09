@@ -1,13 +1,35 @@
 <van-field value="{{ nameValue }}" size="large" maxlength="15" required clearable clickable="true" label="活动名" placeholder="请输入活动名称" bind:change="onNameChange" />
 <van-cell required title="活动类型" size="large" is-link value="{{typeValue}}" bind:click="onClickType" arrow-direction="{{typeArrowDirection}}" />
-<block wx:if="{{showTree}}">
+<van-popup show="{{ showTree }}" overlay="false" round position="bottom" custom-style="height: 50%">
   <van-tree-select items="{{ items }}" main-active-index="{{ mainActiveIndex }}" active-id="{{ activeId }}" bind:click-nav="onClickNav" bind:click-item="onClickItem" />
-</block>
-<van-field value="{{ numberValue }}" size="large"  type="digit" maxlength="4" required clickable="true" label="人数" placeholder="请设置参与人数上限" bind:change="onNumberChange" />
+</van-popup>
+
+<van-field value="{{ peopleNumber }}" size="large" type="number" maxlength="4" required clickable="true" label="人数" placeholder="请设置参与人数上限" bind:change="onNumberChange" />
 <van-field value="{{ introValue }}" size="large" show-word-limit="true" autosize="{{introSizeLimit}}" type="textarea" maxlength="100" required clearable clickable="true" label="介绍" placeholder="请输入活动介绍" bind:change="onIntroChange" />
 <van-field value="{{ locationText }}" size="large" maxlength="30" required clearable clickable="true" label="活动地点" placeholder="点击选择活动位置" bind:click-input="onClickLocation" bind:change="onLocationChange" />
-<van-field value="{{ siteValue }}" size="large" maxlength="20" required clearable clickable="true" label="起始时间" placeholder="请选择活动时间段" bind:click-input="onClickTime" />
-<van-field value="{{ price }}" size="large" type="digit" maxlength="5" required clearable clickable="true" label="费用" placeholder="请输入报名费用" bind:confirm="onPriceChange" />
+<van-field value="{{ startTime }}" size="large" required clearable clickable="true" label="开始时间" placeholder="点击选择时间" bind:click-input="onClickStartTime" />
+<van-field value="{{ endTime }}" size="large" required clearable clickable="true" label="结束时间" placeholder="点击选择时间" bind:click-input="onClickEndTime" />
 
+<van-popup show="{{ popStartTime }}" round position="bottom" custom-style="height: 50%">
+  <van-datetime-picker type="datetime" title="开始时间" value="{{ startTime }}" min-date="{{ minDate }}" bind:confirm="onStartTimeConfirm" bind:cancel="onStartTimeCancel" />
+</van-popup>
+<van-popup show="{{ popEndTime }}" round position="bottom" custom-style="height: 50%">
+  <van-datetime-picker type="datetime" title="结束时间" value="{{ endTime }}" min-date="{{ minDate }}" bind:confirm="onEndTimeConfirm" bind:cancel="onEndTimeCancel" />
+</van-popup>
 
-<van-uploader deletable="{{ true }}" max-count="3" file-list="{{ fileList }}" bind:after-read="afterRead" />
+<van-field value="{{ price }}" size="large" type="number" maxlength="5" required clearable clickable="true" label="费用" placeholder="请输入报名费用" bind:confirm="onPriceChange" />
+
+<van-uploader deletable="{{ true }}" max-count="3" file-list="{{ fileList }}" bind:after-read="afterRead" >
+  <van-button icon="photo" custom-style="font-size:1rem" plain type="info">上传图片</van-button>
+</van-uploader>
+
+<van-divider/>
+
+<van-row>
+  <van-col span="8">
+    <van-button round color="#C4B8B5" icon="close" type="info" custom-style="font-size:1rem">重置</van-button>
+  </van-col>
+  <van-col span="8"  offset="4">
+    <van-button round icon="add-o" type="primary" custom-style="font-size:1rem">确认创建</van-button>
+  </van-col>
+</van-row>

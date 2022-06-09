@@ -1,11 +1,16 @@
 {
-  "navigationBarTitleText": "报名冲冲冲",
+  "navigationBarTitleText": "活动报名冲",
   "usingComponents": {
     "van-field": "@vant/weapp/field/index",
     "van-uploader": "@vant/weapp/uploader/index",
     "van-tree-select": "@vant/weapp/tree-select/index",
     "van-cell": "@vant/weapp/cell/index",
     "van-button": "@vant/weapp/button/index",
-    "van-checkbox": "@vant/weapp/checkbox/index"
+    "van-checkbox": "@vant/weapp/checkbox/index",
+    "van-popup": "@vant/weapp/popup/index",
+    "van-datetime-picker": "@vant/weapp/datetime-picker/index",
+    "van-row": "@vant/weapp/row/index",
+    "van-col": "@vant/weapp/col/index",
+    "van-divider": "@vant/weapp/divider/index"
   }
 }
