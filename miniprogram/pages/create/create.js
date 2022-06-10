@@ -2,10 +2,14 @@
 // var qqmapsdk;
 // const key = '7WZBZ-3F3C3-RXA3C-3Z45A-EXNP2-2GBO7'; //使用在腾讯位置服务申请的key
 
+import Toast from '@vant/weapp/toast/toast';
+// import timer from '/utils/timer.js'
+const timer = require('../../utils/timer.js')
+
 Page({
   data: {
     nameValue: '',
-    typeValue: '点击选择活动类型',
+    typeValue: '点击选择类型',
     introValue: '',
     locationText: '',
     location: {},
@@ -15,13 +19,14 @@ Page({
     },
     peopleNumber: 1,
     price: 0,
-    startTime: '',
-    endTime: '',
+    startTime: 0,
+    startTimeText: '',
+    endTime: 0,
+    endTimeText: '',
     minDate: new Date().getTime(),
     popStartTime: false,
     popEndTime: false,
     showTree: false,
-    typeArrowDirection: '',
     fileList: [],
     items: [{
         // 导航名称
@@ -61,6 +66,26 @@ Page({
     mainActiveIndex: 0,
     mainActiveText: '运动',
     activeId: null,
+    queueChecked: true,
+    queueDisabled: false,
+    signChecked: true,
+    signDisabled: false
+  },
+  onClickCancel() {
+    // 跳转回上一个页面
+  },
+  onClickConfirm() {
+    // 创建记录
+  },
+  onChangeSign(event) {
+    this.setData({
+      signChecked: event.detail
+    })
+  },
+  onChangeQueue(event) {
+    this.setData({
+      queueChecked: event.detail
+    })
   },
   onNameChange(event) {
     this.setData({
@@ -91,13 +116,13 @@ Page({
     }
   },
   onClickType() {
-    let typeDirect = 'down'
-    if (this.data.typeArrowDirection === 'down') {
-      typeDirect = ''
-    }
     this.setData({
       showTree: !this.data.showTree,
-      typeArrowDirection: typeDirect
+    });
+  },
+  onCloseTreeSelect() {
+    this.setData({
+      showTree: false
     });
   },
   onClickNav({
@@ -148,14 +173,30 @@ Page({
     })
   },
   onStartTimeConfirm(event) {
+    if (this.data.endTime !== 0 && event.detail > this.data.endTime) {
+      Toast({
+        message: '开始时间不能晚于结束时间',
+        position: 'top'
+      });
+      return
+    }
     this.setData({
       startTime: event.detail,
+      startTimeText: timer.format(event.detail),
       popStartTime: false
     });
   },
   onEndTimeConfirm(event) {
+    if (this.data.startTime !== 0 && event.detail < this.data.startTime) {
+      Toast({
+        message: '结束时间不能早于开始时间',
+        position: 'top'
+      });
+      return
+    }
     this.setData({
       endTime: event.detail,
+      endTimeText: timer.format(event.detail),
       popEndTime: false
     });
   },
