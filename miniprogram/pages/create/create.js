@@ -69,13 +69,15 @@ Page({
     queueChecked: true,
     queueDisabled: false,
     signChecked: true,
-    signDisabled: false
+    signDisabled: false,
+    privateChecked: false,
+    privateDisabled: false,
+
   },
-  onClickCancel() {
-    // 跳转回上一个页面
-  },
-  onClickConfirm() {
-    // 创建记录
+  onChangePrivate(event) { // 后期需要会员制才可以私密
+    this.setData({
+      privateChecked: event.detail
+    })
   },
   onChangeSign(event) {
     this.setData({
@@ -211,32 +213,44 @@ Page({
     });
   },
 
+  imgOver() {
+    Toast('文件大小不能超过15KB !');
+  },
+  deleteImg() {
+    this.setData({
+      fileList: []
+    })
+  },
   afterRead(event) {
     const {
       file
     } = event.detail;
-    // 当设置 mutiple 为 true 时, file 为数组格式，否则为对象格式
-    wx.uploadFile({
-      url: 'https://example.weixin.qq.com/upload', // 仅为示例，非真实的接口地址
-      filePath: file.url,
-      name: 'file',
-      formData: {
-        user: 'test'
-      },
-      success(res) {
-        // 上传完成需要更新 fileList
-        const {
-          fileList = []
-        } = this.data;
-        fileList.push({
-          ...file,
-          url: res.data
-        });
-        this.setData({
-          fileList
-        });
-      },
-    });
+    console.log(event);
+    this.setData({
+      fileList: [{
+        url: file.url
+      }],
+    })
+
+  },
+  onClickCancel() {
+    // 跳转回上一个页面
+  },
+  onClickConfirm() {
+    // 创建数据库记录
+    // 实际上传图片
+
+    // wx.cloud.uploadFile({
+    //   cloudPath: 'example.png', // 上传至云端的路径，取日期+数据库id
+    //   filePath: '', // 小程序临时文件路径
+    //   success: res => {
+    //     // 返回文件 ID
+    //     console.log(res.fileID)
+    //   },
+    //   fail: Toast('文件上传失败，请稍后重试')
+    // })
+    // 提示用户创建成功
+    Toast('创建成功！快去分享活动链接吧~')
   },
 
   // onLoad: function () {

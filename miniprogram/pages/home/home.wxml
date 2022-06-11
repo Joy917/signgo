@@ -13,7 +13,7 @@
               <image class="imgw" src="{{item.url}}" mode="aspectFill" />
             </block>
             <block wx:else>
-              <image src="/images/运动女孩.jpeg" mode="aspectFill"></image>
+              <image src="/images/sports-girl.jpg" mode="aspectFill"></image>
             </block>
           </swiper-item>
         </navigator>

@@ -21,16 +21,19 @@
 
 <van-field value="{{ price }}" size="large" type="number" maxlength="5" required clearable clickable="true" label="费用" placeholder="请输入报名费用" bind:confirm="onPriceChange" />
 
-<van-cell required title="允许排队" size="large">
+<van-cell title="私密活动" size="large">
+  <van-switch size="24px" disabled="{{privateDisabled}}" checked="{{ privateChecked }}" bind:change="onChangePrivate" />
+</van-cell>
+
+<van-cell title="允许排队" size="large">
   <van-switch size="24px" disabled="{{queueDisabled}}" checked="{{ queueChecked }}" bind:change="onChangeQueue" />
 </van-cell>
 
-<van-cell required title="直接报名" size="large">
+<van-cell title="直接报名" size="large">
   <van-switch size="24px" disabled="{{signDisabled}}" checked="{{ signChecked }}" bind:change="onChangeSign" />
 </van-cell>
 
-
-<van-uploader deletable="{{ true }}" max-count="3" file-list="{{ fileList }}" bind:after-read="afterRead">
+<van-uploader preview-size="5rem" file-list="{{ fileList }}" accept="image" max-size="{{15*1024}}" max-count="1" deletable="true" max-count="1" bind:after-read="afterRead" bind:oversize="imgOver" bind:delete="deleteImg">
   <van-button icon="photo" custom-style="font-size:1rem" plain type="info">上传图片</van-button>
 </van-uploader>
 

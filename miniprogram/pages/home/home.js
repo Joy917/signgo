@@ -5,11 +5,11 @@ Page({
     value: "",
     banner_url: [{
         "id": 0,
-        "url": "/images/茶杯-小.jpeg"
+        "url": "/images/cup.jpg"
       },
       {
         "id": 1,
-        "url": "/images/运动女孩.jpeg"
+        "url": "/images/sports-girl.jpg"
       }
     ],
     open: false,
