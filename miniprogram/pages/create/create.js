@@ -1,9 +1,5 @@
-// import QQMapWX from '../../libs/qqmap-wx-jssdk.min.js';
-// var qqmapsdk;
-// const key = '7WZBZ-3F3C3-RXA3C-3Z45A-EXNP2-2GBO7'; //使用在腾讯位置服务申请的key
 
 import Toast from '@vant/weapp/toast/toast';
-// import timer from '/utils/timer.js'
 const timer = require('../../utils/timer.js')
 
 Page({
@@ -253,12 +249,6 @@ Page({
     Toast('创建成功！快去分享活动链接吧~')
   },
 
-  // onLoad: function () {
-  // 实例化API核心类
-  // qqmapsdk = new QQMapWX({
-  //   key
-  // });
-  // },
   onShow: function () {
     // 自定义tabbar初始化
     if (typeof this.getTabBar === 'function' && this.getTabBar()) {
