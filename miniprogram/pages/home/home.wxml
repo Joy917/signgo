@@ -1,4 +1,6 @@
 <!--首页-->
+<van-toast id="van-toast" />
+
 <van-search value="{{ value }}" placeholder="请输入活动名" use-action-slot bind:change="onChange" bind:search="onSearch">
   <view slot="action" bind:tap="onClick">搜索</view>
 </van-search>
@@ -22,4 +24,3 @@
   </view>
 </scroll-view>
 <view> 将要开始的活动列表 </view>
-<van-toast id="van-toast" />

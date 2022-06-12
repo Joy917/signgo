@@ -1,4 +1,3 @@
-
 import Toast from '@vant/weapp/toast/toast';
 const timer = require('../../utils/timer.js')
 
@@ -19,11 +18,20 @@ Page({
     startTimeText: '',
     endTime: 0,
     endTimeText: '',
+    signEndTime: 0,
+    signEndTimeText: '',
     minDate: new Date().getTime(),
     popStartTime: false,
     popEndTime: false,
+    popSignEndTime: false,
     showTree: false,
     fileList: [],
+    timePickerFilter(type, options) {
+      if (type === 'minute') {
+        return options.filter((option) => option % 10 === 0);
+      }
+      return options;
+    },
     items: [{
         // 导航名称
         text: '运动',
@@ -170,6 +178,11 @@ Page({
       popEndTime: true
     })
   },
+  onClickSignEndTime() {
+    this.setData({
+      popSignEndTime: true
+    })
+  },
   onStartTimeConfirm(event) {
     if (this.data.endTime !== 0 && event.detail > this.data.endTime) {
       Toast({
@@ -198,6 +211,13 @@ Page({
       popEndTime: false
     });
   },
+  onSignEndTimeConfirm(event) {
+    this.setData({
+      signEndTime: event.detail,
+      signEndTimeText: timer.format(event.detail),
+      popSignEndTime: false
+    });
+  },
   onStartTimeCancel() {
     this.setData({
       popStartTime: false
@@ -208,9 +228,14 @@ Page({
       popEndTime: false
     });
   },
+  onSignEndTimeCancel() {
+    this.setData({
+      popSignEndTime: false
+    });
+  },
 
   imgOver() {
-    Toast('文件大小不能超过15KB !');
+    Toast('文件大小不能超过50KB !');
   },
   deleteImg() {
     this.setData({
@@ -230,7 +255,11 @@ Page({
 
   },
   onClickCancel() {
+    // 提示用户是否确认回到首页，会丢失已输入内容
     // 跳转回上一个页面
+    // wx.switchTab({
+    //   url: '/pages/home/home',
+    // })
   },
   onClickConfirm() {
     // 创建数据库记录
